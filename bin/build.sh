@@ -2,5 +2,5 @@
 
 mkdir -p build
 docker build -t qvmf-vbios-patch docker-build       
-docker run -v "$PWD/build:/build" -v "$PWD/roms:/roms" qvmf-vbios-patch /qvmf/compile-qvmf.sh
-tar -czf build/qvmf-vbios-patched.tgz build/OVMF*
+docker run -v "$PWD/build:/build" -v "$PWD/roms:/roms" ovmf-vbios-patch /ovmf/compile-qvmf.sh
+tar -czf build/ovmf-vbios-patched.tgz build/OVMF*

@@ -21,6 +21,15 @@ git pull
 # Build Basetools
 make -C BaseTools
 
+# Patch
+/ovmf/prepare-rom-patch.sh
+cp patches/vrom.h OvmfPkg/AcpiPlatformDxe/
+cp patches/vrom_table.h OvmfPkg/AcpiPlatformDxe/
+
+dos2unix OvmfPkg/AcpiPlatformDxe/QemuFwCfgAcpi.c
+patch -p1 < /qvmf/QemuFwCfgAcpi.c.patch
+unix2dos OvmfPkg/AcpiPlatformDxe/QemuFwCfgAcpi.c
+
 # Build QVMF
 . edksetup.sh BaseTools
 ./BaseTools/BinWrappers/PosixLike/build -t GCC5 -a X64 -p OvmfPkg/OvmfPkgX64.dsc -n $(nproc) -b RELEASE -D FD_SIZE_2MB
