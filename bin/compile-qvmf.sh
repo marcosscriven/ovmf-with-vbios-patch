@@ -1,5 +1,12 @@
 #! /bin/bash
 
+# This build is based on information gather from:
+#
+#   https://www.reddit.com/r/VFIO/comments/8gv60l/current_state_of_optimus_muxless_laptop_gpu/
+#   https://github.com/jscinoz/optimus-vfio-docs/issues/2#issuecomment-380335101
+#   https://gist.github.com/Ashymad/2c8192519492dec262b344deb68fed44
+#
+
 # Prepare env
 export SRC_DIR="/edk2"
 export PATH="${SRC_DIR}/bin:${PATH}"
