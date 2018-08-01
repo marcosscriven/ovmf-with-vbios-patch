@@ -20,7 +20,7 @@ cd ${SRC_DIR}
 mkdir -p bin
 ln -sf /usr/bin/python2.7 bin/python 
 git pull
-# git checkout 3f34e36d04a8de4992a696f738643b5a11261469
+git checkout vUDK2018
 
 # Build Basetools
 make -C BaseTools
