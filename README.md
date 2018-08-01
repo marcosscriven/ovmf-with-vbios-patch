@@ -1,1 +1,1 @@
-# qvmf-with-vbios-patch
+# ovmf-with-vbios-patch

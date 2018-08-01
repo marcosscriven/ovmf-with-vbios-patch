@@ -7,7 +7,7 @@ deploy:
   provider: releases
   api_key:
     secure: Pojtmh/34hFfhVQTGQwa2lSGW+KuUSbKkt+1Zh0ySPAkw3nbfHMV6leQDC/laCtWVLbBPlv2Q9QQ3giKa+ygmNMwN9toZjQrkUtHwnCPTOEzSRMSA1OGuQex/QRivcSmqK1bbVx2K4bHPZRfC0XbGK30DMOA6eBiVhssFf06PwgfmuwVZK501aHGC4bWJI9KAGgRDjlkEzJkuqh7A4Ju0ZAr8Jl06yZ276nnRPeoxa+ekwcx4h2Sf+6xLSkDIr22GwT+BKcA+cJYMvHZqQfMwY8y0vrC9ka+4GgCEvGRkMpH/zic3guUC7/w6WDjjM0/KW0sy2aFC8dO+hCQ7sTAWa+raSXeECrUjXVOn4n7oKxfTMeR3z45NVh4OjplmbHd1INSg8LxmQ/7j/CLpuABBEvZduqO8PSG/IbM5++9tAzGevl2amGRrSLwhNTLnCh78CSSQZ6fWjRljFxC5Q6ij2Fs8uVuYmFXY3ClAQCEK2yPK8AjkLQfb61ByrERlhla1pwhDvfo8oSYqFgBDxyWdrio8Ab0BmEU4ZkmO1gHcvHn6dH4bunaIZcnqNquXUtlQU0f9rToNWsDFELvz6KVwJ+JCIKrzOtz+XfCoSPkp61PQGTHYciTpfDOdcjW5mKwzrHns7s0q8mUt3agcFBC38NR4A0b/OzYgiZrWFu6BgE=
-  file: build/qvmf-vbios-patched.tgz
+  file: build/ovmf-vbios-patched.tgz
   skip_cleanup: true
   on:
     tags: true

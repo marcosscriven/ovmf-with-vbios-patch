@@ -16,7 +16,7 @@ function prepareRomPatch() {
   sed -i 's/vBIOS_bin/VROM_BIN/g; s/_len/_LEN/g' vrom.h
 
   # Grab its length and update it in the ssdt
-  cp /qvmf/ssdt.asl .
+  cp /ovmf/ssdt.asl .
   rom_len=$(grep VROM_BIN_LEN vrom.h | cut -d' ' -f5 | sed 's/;//g')
   sed -i "s/103936/$rom_len/g" ssdt.asl
   iasl -f ssdt.asl
