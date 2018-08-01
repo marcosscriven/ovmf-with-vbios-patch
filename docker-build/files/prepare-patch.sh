@@ -1,18 +1,18 @@
 #! /bin/bash
 
-mkdir -p /patches
 
-function preparePatch() {
+function prepareRomPatch() {
   rom_file=$1
 
   echo "Preparing patch for $rom_file"
 
   # Work in the /patches dir
+  mkdir -p /patches
   pushd /patches
 
   # Make a header file from the binary rom
   cp "/roms/${rom_file}" vBIOS.bin
-  xxd -i "/roms/${rom_file}" vrom.h
+  xxd -i vBIOS.bin vrom.h
   sed -i 's/vBIOS_bin/VROM_BIN/g; s/_len/_LEN/g' vrom.h
 
   # Grab its length and update it in the ssdt
@@ -28,4 +28,4 @@ function preparePatch() {
   popd
 }
 
-preparePatch quadro-1200m.rom
+prepareRomPatch quadro-1200m.rom
