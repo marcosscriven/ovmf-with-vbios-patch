@@ -17,3 +17,7 @@ make -C BaseTools
 # Build QVMF
 . edksetup.sh BaseTools
 ./BaseTools/BinWrappers/PosixLike/build -t GCC5 -a X64 -p OvmfPkg/OvmfPkgX64.dsc -n $(nproc) -b RELEASE -D FD_SIZE_2MB
+
+# Copy to host build dir
+cp ${SRC_DIR}/Build/OvmfX64/RELEASE_GCC5/FV/OVMF_CODE.fd /build
+cp ${SRC_DIR}/Build/OvmfX64/RELEASE_GCC5/FV/OVMF_VARS.fd /build

@@ -1,4 +1,4 @@
 #! /bin/bash
 
 docker build -t qvmf-vbios-patch .       
-docker run qvmf-vbios-patch /compile-qvmf.sh
+docker run -v "$PWD/build:/build" qvmf-vbios-patch /compile-qvmf.sh
