@@ -3,7 +3,9 @@
 mkdir -p /patches
 
 function preparePatch() {
-  rom_file = $1
+  rom_file=$1
+
+  echo "Preparing patch for $rom_file"
 
   # Work in the /patches dir
   pushd /patches
@@ -26,6 +28,4 @@ function preparePatch() {
   popd
 }
 
-function preparePatches() {
-    preparePatch quadro-1200m.rom 
-}
+preparePatch quadro-1200m.rom
