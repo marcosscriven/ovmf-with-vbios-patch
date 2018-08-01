@@ -9,6 +9,7 @@ function preparePatch() {
   pushd /patches
 
   # Make a header file from the binary rom
+  cp "/roms/${rom_file}" vBIOS.bin
   xxd -i "/roms/${rom_file}" vrom.h
   sed -i 's/vBIOS_bin/VROM_BIN/g; s/_len/_LEN/g' vrom.h
 
