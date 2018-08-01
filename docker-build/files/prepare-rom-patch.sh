@@ -1,6 +1,6 @@
 #! /bin/bash
 
-
+# This will take a regular ROM file and create a vrom.h and vrom_table.h for it
 function prepareRomPatch() {
   rom_file=$1
 
@@ -28,4 +28,4 @@ function prepareRomPatch() {
   popd
 }
 
-prepareRomPatch quadro-1200m.rom
+prepareRomPatch $1

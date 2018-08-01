@@ -7,6 +7,9 @@
 #   https://gist.github.com/Ashymad/2c8192519492dec262b344deb68fed44
 #
 
+rom_file=$1
+echo "Building OVMF with a VBIOS for $rom_file"
+
 # Prepare env
 export SRC_DIR="/edk2"
 export PATH="${SRC_DIR}/bin:${PATH}"
@@ -23,7 +26,7 @@ git checkout 3f34e36d04a8de4992a696f738643b5a11261469
 make -C BaseTools
 
 # Patch
-/ovmf/prepare-rom-patch.sh
+/ovmf/prepare-rom-patch.sh $rom_file
 cp /patches/vrom.h OvmfPkg/AcpiPlatformDxe/
 cp /patches/vrom_table.h OvmfPkg/AcpiPlatformDxe/
 
