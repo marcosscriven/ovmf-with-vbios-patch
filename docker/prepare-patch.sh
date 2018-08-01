@@ -1,7 +1,11 @@
 #! /bin/bash
 
+mkdir -p /patches
+
 function preparePatch() {
-  xxd -i vBIOS.bin vrom.h
+  rom_file = $1
+
+  xxd -i "/roms/${rom_file}" /patches/vrom.h
   sed -i 's/vBIOS_bin/VROM_BIN/g; s/_len/_LEN/g' vrom.h
   rom_len=$(grep VROM_BIN_LEN vrom.h | cut -d' ' -f5 | sed 's/;//g')
   sed -i "s/103936/$rom_len/g" ssdt.asl
@@ -16,4 +20,8 @@ function preparePatch() {
   cd "$srcdir/edk2"
   patch -p1 < "$srcdir/nvidia-hack.diff"
   unix2dos "$srcdir/edk2/OvmfPkg/AcpiPlatformDxe/QemuFwCfgAcpi.c"
+}
+
+function preparePatches() {
+    preparePatch quadro-1200m.rom 
 }
