@@ -17,14 +17,15 @@ cd ${SRC_DIR}
 mkdir -p bin
 ln -sf /usr/bin/python2.7 bin/python 
 git pull
+git checkout 3f34e36d04a8de4992a696f738643b5a11261469
 
 # Build Basetools
 make -C BaseTools
 
 # Patch
 /ovmf/prepare-rom-patch.sh
-cp patches/vrom.h OvmfPkg/AcpiPlatformDxe/
-cp patches/vrom_table.h OvmfPkg/AcpiPlatformDxe/
+cp /patches/vrom.h OvmfPkg/AcpiPlatformDxe/
+cp /patches/vrom_table.h OvmfPkg/AcpiPlatformDxe/
 
 dos2unix OvmfPkg/AcpiPlatformDxe/QemuFwCfgAcpi.c
 patch -p1 < /ovmf/QemuFwCfgAcpi.c.patch
