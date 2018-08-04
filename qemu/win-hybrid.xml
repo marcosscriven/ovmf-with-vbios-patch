@@ -1,13 +1,13 @@
 <domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
-  <name>win10-pci</name>
-  <uuid>2000200e-e107-1c07-4284-0123456789ab</uuid>
+  <name>win10-2</name>
+  <uuid>e7d44285-507b-48da-bfe2-2eba415016bd</uuid>
   <memory unit='KiB'>4194304</memory>
   <currentMemory unit='KiB'>4194304</currentMemory>
   <vcpu placement='static' current='4'>8</vcpu>
   <os>
-    <type arch='x86_64' machine='pc-q35-2.10'>hvm</type>
-    <loader readonly='yes' type='pflash'>/usr/share/OVMF/OVMF_CODE.fd</loader>
-    <nvram>/var/lib/libvirt/qemu/nvram/win10_VARS.fd</nvram>
+    <type arch='x86_64' machine='pc-q35-2.11'>hvm</type>
+    <loader readonly='yes' type='pflash'>/edk2/Build/OvmfX64/RELEASE_GCC5/FV/OVMF_CODE.fd</loader>
+    <nvram>/edk2/Build/OvmfX64/RELEASE_GCC5/FV/OVMF_VARS.fd</nvram>
     <bootmenu enable='yes'/>
     <smbios mode='host'/>
   </os>
@@ -43,27 +43,18 @@
   </pm>
   <devices>
     <emulator>/usr/bin/kvm-spice</emulator>
-    <disk type='block' device='disk'>
-      <driver name='qemu' type='raw' cache='none' io='native'/>
-      <source dev='/dev/mapper/native'/>
-      <target dev='sda' bus='sata'/>
-      <serial>0021766F</serial>
-      <boot order='1'/>
-      <address type='drive' controller='0' bus='0' target='0' unit='0'/>
-    </disk>
-    <disk type='block' device='disk'>
-      <driver name='qemu' type='raw' cache='none' io='native'/>
-      <source dev='/dev/mapper/ndata'/>
-      <target dev='sdb' bus='sata'/>
-      <serial>FEC44D3D</serial>
-      <address type='drive' controller='0' bus='0' target='0' unit='1'/>
-    </disk>
     <disk type='file' device='cdrom'>
       <driver name='qemu' type='raw'/>
-      <source file='/home/arne/Downloads/Win10_1709_Dutch_x64.iso'/>
-      <target dev='sdc' bus='sata'/>
+      <source file='/home/marcosscriven/Downloads/Win10_1803_English_x64.iso'/>
+      <target dev='sda' bus='sata'/>
       <readonly/>
-      <address type='drive' controller='0' bus='0' target='0' unit='2'/>
+      <address type='drive' controller='0' bus='0' target='0' unit='0'/>
+    </disk>
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='qcow2'/>
+      <source file='/var/lib/libvirt/images/win10-2-1.qcow2'/>
+      <target dev='sdb' bus='sata'/>
+      <address type='drive' controller='0' bus='0' target='0' unit='1'/>
     </disk>
     <controller type='sata' index='0'>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x1f' function='0x2'/>
@@ -165,9 +156,9 @@
   </devices>
   <qemu:commandline>
     <qemu:arg value='-set'/>
-    <qemu:arg value='device.hostdev0.x-pci-sub-vendor-id=4156'/>
+    <qemu:arg value='device.hostdev0.x-pci-sub-vendor-id=4318'/>
     <qemu:arg value='-set'/>
-    <qemu:arg value='device.hostdev0.x-pci-sub-device-id=33006'/>
+    <qemu:arg value='device.hostdev0.x-pci-sub-device-id=5046'/>
     <qemu:env name='QEMU_AUDIO_DRV' value='pa'/>
     <qemu:env name='QEMU_PA_SERVER' value='/run/user/1000/pulse/native'/>
   </qemu:commandline>
