@@ -41,8 +41,6 @@ sudo /usr/bin/kvm-spice \
 -device ide-cd,bus=ide.0,drive=drive-sata0-0-0,id=sata0-0-0,bootindex=1 \
 -drive file=/var/lib/libvirt/images/win10-2-2.qcow2,format=qcow2,if=none,id=drive-sata0-0-2 \
 -device ide-hd,bus=ide.2,drive=drive-sata0-0-2,id=sata0-0-2,bootindex=2 \
--netdev tap,fd=22,id=hostnet0 \
--device rtl8139,netdev=hostnet0,id=net0,mac=52:54:00:50:41:60,bus=pci.8,addr=0x1 \
 -device usb-tablet,id=input0,bus=usb.0,port=1 \
 -spice port=5901,addr=127.0.0.1,disable-ticketing,seamless-migration=on \
 -device virtio-vga,id=video0,max_outputs=1,bus=pci.2,addr=0x0 \
@@ -52,4 +50,7 @@ sudo /usr/bin/kvm-spice \
 -chardev spicevmc,id=charredir1,name=usbredir \
 -device usb-redir,chardev=charredir1,id=redir1,bus=usb.0,port=4 \
 -device virtio-balloon-pci,id=balloon0,bus=pci.5,addr=0x0 \
+-device vfio-pci,host=01:00.0,bus=pci.1,addr=00.0,x-pci-sub-device-id=4136,x-pci-sub-vendor-id=1983,multifunction=on \
+-netdev tap,fd=22,id=hostnet0 \
+-device rtl8139,netdev=hostnet0,id=net0,mac=52:54:00:50:41:60,bus=pci.8,addr=0x1 \
 -msg timestamp=on 
