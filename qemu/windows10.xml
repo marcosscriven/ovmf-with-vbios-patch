@@ -1,4 +1,5 @@
-<domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
+<domain type='kvm' 
+  xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
   <name>windows10</name>
   <uuid>e7d44285-507b-48da-bfe2-2eba415016bd</uuid>
   <memory unit='MiB'>16384</memory>
@@ -166,6 +167,10 @@
     <memballoon model='virtio'>
       <address type='pci' domain='0x0000' bus='0x05' slot='0x00' function='0x0'/>
     </memballoon>
+    <shmem name='looking-glass'>
+      <model type='ivshmem-plain'/>
+      <size unit='M'>32</size>
+    </shmem>
   </devices>
   <qemu:commandline>
     <qemu:arg value='-set'/>
@@ -176,4 +181,3 @@
     <qemu:arg value='device.hostdev0.bus=pci.1'/>
   </qemu:commandline>
 </domain>
-
