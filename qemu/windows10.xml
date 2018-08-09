@@ -167,10 +167,10 @@
     <memballoon model='virtio'>
       <address type='pci' domain='0x0000' bus='0x05' slot='0x00' function='0x0'/>
     </memballoon>
-    <shmem name='looking-glass'>
+    <!-- <shmem name='looking-glass'>
       <model type='ivshmem-plain'/>
       <size unit='M'>32</size>
-    </shmem>
+    </shmem> -->
   </devices>
   <qemu:commandline>
     <qemu:arg value='-set'/>
